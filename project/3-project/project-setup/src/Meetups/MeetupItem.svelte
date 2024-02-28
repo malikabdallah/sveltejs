@@ -62,7 +62,7 @@ article {
   }
 
   .content{
-    height: 4rem;
+    height: 4rem; 
   }
 </style>
 
