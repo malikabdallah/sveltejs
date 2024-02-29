@@ -1,9 +1,11 @@
 <script>
-    export let controlType;
-    export let id;
-    export let label;
-    export let rows;
-    export let value;
+    export let controlType=null;
+    export let id=null;
+    export let label=null;
+    export let rows=null;
+    export let value=null;
+    
+
 </script>    
 
 <style>
