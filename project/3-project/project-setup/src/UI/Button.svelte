@@ -4,6 +4,7 @@
     export let href=null;
     export let mode=null;
     export let color=null;
+    export let disable=false;
 </script>
 
 <style>
@@ -90,7 +91,7 @@ button:disabled:active {
       <slot/>
     </a>
 {:else}
-<button class="{mode} {color}" type="{type}" on:click>
+<button disabled="{disable}" class="{mode} {color}" type="{type}" on:click>
   <!--  {caption}-->
   <slot />
 

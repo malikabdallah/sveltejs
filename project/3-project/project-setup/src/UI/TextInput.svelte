@@ -4,7 +4,10 @@
     export let label=null;
     export let rows=null;
     export let value=null;
-    
+    export let valid =true;
+    export let validityMessage ='';
+
+    let touched =false;
 
 </script>    
 
@@ -39,6 +42,16 @@
     width: 100%;
     margin: 0.25rem 0;
   }
+
+  .invalid {
+    border-color:red;
+    background: #fde3e3;
+  }
+
+  .error-message {
+    color:red;
+    margin: 0.25rem 0;
+  }
 </style>
 <!--
     on:input => forward to parent componnent
@@ -48,10 +61,14 @@
     <label for="{id}">{label}</label>
 
     {#if controlType === 'textarea'}
-        <textarea  rows="{rows}" id="{id}" bind:value="{value}" on:input></textarea>
+        <textarea class:invalid="{!valid  && touched}"  rows="{rows}" id="{id}" bind:value="{value}" on:input on:blur="{()=>touched=true}"></textarea>
     {:else if controlType === 'text'}
-        <input type="text" id="{id}" bind:value="{value}" on:input/>
+        <input class:invalid="{!valid && touched}" type="text" id="{id}" bind:value="{value}" on:input on:blur="{()=>touched=true}"/>
     {:else}
-        <input type="email" id="{id}" bind:value="{value}" on:input/>
+        <input class:invalid="{!valid && touched}" type="email" id="{id}" bind:value="{value}" on:input on:blur="{()=>touched=true}"/>
+    {/if}
+
+    {#if validityMessage && !valid && touched}
+      <p class="error-message">{validityMessage}</p>
     {/if}
 </div>

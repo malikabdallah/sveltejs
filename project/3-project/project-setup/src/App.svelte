@@ -109,8 +109,6 @@
     {#if editMode === 'add'}
         <EditMeetUp on:save="{handleSave}" on:cancel="{closeModal}" />
 
-    {:else}
-
     {/if}
 
     <MeetupGrid meetups="{meetups}"  on:favorite="{handleMethode}"/> 
